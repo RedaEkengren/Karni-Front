@@ -1,0 +1,157 @@
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useAuthStore } from '@/stores/authStore';
+import { Menu, X, LogIn, User } from 'lucide-react';
+
+const Header = () => {
+  const { isArabic, toggleLanguage, t } = useLanguage();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const { isAuthenticated, user } = useAuthStore();
+
+  const navLinks = [
+    { path: '/', label: { ar: 'الرئيسية', fr: 'Accueil' } },
+    { path: '/features', label: { ar: 'المميزات', fr: 'Fonctionnalités' } },
+    { path: '/pricing', label: { ar: 'الأثمنة', fr: 'Tarifs' } },
+    { path: '/preview', label: { ar: 'معاينة', fr: 'Aperçu' } },
+    { path: '/contact', label: { ar: 'تواصل', fr: 'Contact' } },
+  ];
+
+  const isActive = (path: string) => location.pathname === path;
+
+  return (
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="section-container">
+        <div className="flex items-center justify-between h-16 md:h-20">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <span className="text-primary-foreground text-xl">📓</span>
+            </div>
+            <span className="font-bold text-lg md:text-xl text-primary">
+              {t('رصيدي', 'Rassidi')}
+            </span>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  isActive(link.path)
+                    ? 'bg-primary text-primary-foreground'
+                    : 'text-foreground/70 hover:text-foreground hover:bg-muted'
+                }`}
+              >
+                {isArabic ? link.label.ar : link.label.fr}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Language Toggle & Auth */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={toggleLanguage}
+              className="px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-sm font-medium hover:bg-muted transition-colors"
+            >
+              {isArabic ? 'FR' : 'ع'}
+            </button>
+
+            {isAuthenticated ? (
+              <Link
+                to="/app"
+                className="hidden sm:inline-flex btn-primary !px-4 !py-2 !text-sm gap-2"
+              >
+                <User size={16} />
+                {t('التطبيق', 'Mon App')}
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="hidden sm:inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
+                >
+                  <LogIn size={16} />
+                  {t('دخول', 'Connexion')}
+                </Link>
+                <Link
+                  to="/login"
+                  className="hidden sm:inline-flex btn-primary !px-4 !py-2 !text-sm"
+                >
+                  {t('سجل مجانا', 'S\'inscrire')}
+                </Link>
+              </>
+            )}
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-muted transition-colors"
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className="md:hidden py-4 border-t border-border animate-fade-in">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+                    isActive(link.path)
+                      ? 'bg-primary text-primary-foreground'
+                      : 'text-foreground/70 hover:text-foreground hover:bg-muted'
+                  }`}
+                >
+                  {isArabic ? link.label.ar : link.label.fr}
+                </Link>
+              ))}
+
+              {/* Auth buttons */}
+              <div className="border-t border-border mt-2 pt-2 flex flex-col gap-1">
+                {isAuthenticated ? (
+                  <Link
+                    to="/app"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="btn-primary"
+                  >
+                    <User size={18} />
+                    {t('التطبيق', 'Mon App')}
+                  </Link>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="px-4 py-3 rounded-lg font-medium text-foreground/70 hover:text-foreground hover:bg-muted flex items-center gap-2"
+                    >
+                      <LogIn size={18} />
+                      {t('دخول', 'Connexion')}
+                    </Link>
+                    <Link
+                      to="/login"
+                      onClick={() => setIsMenuOpen(false)}
+                      className="btn-primary"
+                    >
+                      {t('سجل مجانا', 'S\'inscrire gratuitement')}
+                    </Link>
+                  </>
+                )}
+              </div>
+            </div>
+          </nav>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;

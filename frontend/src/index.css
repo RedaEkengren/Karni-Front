@@ -1,0 +1,332 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* رصيدي Design System - Trust-focused, Paper-inspired */
+
+@layer base {
+  :root {
+    /* Primary - Deep Forest Green (Trust & Stability) */
+    --primary: 160 47% 21%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Warm Beige (Paper/Notebook feel) */
+    --secondary: 60 33% 91%;
+    --secondary-foreground: 160 47% 21%;
+    
+    /* Accent - Gold (Premium touch) */
+    --accent: 43 74% 52%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Background & Surface */
+    --background: 40 20% 98%;
+    --foreground: 0 0% 18%;
+    
+    /* Card - Slightly warmer than background */
+    --card: 40 30% 97%;
+    --card-foreground: 0 0% 18%;
+    
+    /* Muted - For subtle elements */
+    --muted: 40 20% 94%;
+    --muted-foreground: 0 0% 40%;
+    
+    /* Popover */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 18%;
+    
+    /* Border - Subtle warm gray */
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 160 47% 21%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Success - For paid debts */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    /* Warning - For pending */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    
+    /* Radius */
+    --radius: 0.75rem;
+    
+    /* Paper texture gradient */
+    --paper-gradient: linear-gradient(180deg, hsl(40 30% 97%) 0%, hsl(40 20% 95%) 100%);
+    
+    /* Notebook line color */
+    --notebook-line: hsl(210 20% 85%);
+    
+    /* Shadow for depth */
+    --shadow-soft: 0 4px 20px -4px hsl(0 0% 0% / 0.08);
+    --shadow-card: 0 2px 12px -2px hsl(0 0% 0% / 0.06);
+    
+    /* Sidebar */
+    --sidebar-background: 160 47% 21%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 43 74% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 40% 28%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 160 40% 28%;
+    --sidebar-ring: 43 74% 52%;
+  }
+
+  .dark {
+    --primary: 160 47% 35%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 40 20% 15%;
+    --secondary-foreground: 40 30% 90%;
+    --accent: 43 74% 52%;
+    --accent-foreground: 0 0% 100%;
+    --background: 0 0% 8%;
+    --foreground: 40 20% 95%;
+    --card: 0 0% 12%;
+    --card-foreground: 40 20% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 40 10% 60%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 40 20% 95%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 160 47% 45%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', 'Cairo', sans-serif;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] body {
+    font-family: 'Cairo', 'Inter', sans-serif;
+  }
+
+  /* Arabic typography adjustments */
+  [dir="rtl"] {
+    letter-spacing: 0;
+  }
+
+  /* Smooth transitions for language toggle */
+  html {
+    transition: direction 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Paper/Notebook texture effect */
+  .paper-texture {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 31px,
+        var(--notebook-line) 31px,
+        var(--notebook-line) 32px
+      );
+    background-size: 100% 32px;
+  }
+
+  /* Trust badge styling */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full;
+    @apply bg-secondary text-secondary-foreground;
+    @apply border border-border;
+    @apply text-sm font-medium;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+
+  /* Card with notebook effect */
+  .notebook-card {
+    @apply relative bg-card rounded-xl p-6;
+    box-shadow: var(--shadow-card);
+    border-left: 4px solid hsl(var(--primary));
+  }
+
+  [dir="rtl"] .notebook-card {
+    border-left: none;
+    border-right: 4px solid hsl(var(--primary));
+  }
+
+  /* Feature card hover */
+  .feature-card {
+    @apply bg-card rounded-xl p-6 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* CTA Button primary */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 rounded-xl;
+    @apply bg-primary text-primary-foreground;
+    @apply font-semibold text-lg;
+    @apply transition-all duration-300;
+    @apply hover:opacity-90 hover:scale-[1.02];
+    @apply active:scale-[0.98];
+    box-shadow: 0 4px 14px -4px hsl(var(--primary) / 0.4);
+  }
+
+  /* CTA Button secondary */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 rounded-xl;
+    @apply bg-secondary text-secondary-foreground;
+    @apply font-semibold text-lg;
+    @apply border-2 border-primary;
+    @apply transition-all duration-300;
+    @apply hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Gold accent button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply px-8 py-4 rounded-xl;
+    @apply font-semibold text-lg;
+    @apply transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(43 74% 45%) 100%);
+    color: white;
+    box-shadow: 0 4px 14px -4px hsl(var(--accent) / 0.5);
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px -4px hsl(var(--accent) / 0.6);
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply bg-card rounded-xl p-4 text-center;
+    @apply border border-border;
+  }
+
+  /* Mockup phone frame */
+  .phone-mockup {
+    @apply relative bg-foreground rounded-[2.5rem] p-3;
+    box-shadow: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
+  }
+
+  .phone-mockup-screen {
+    @apply bg-background rounded-[2rem] overflow-hidden;
+    aspect-ratio: 9/19;
+  }
+
+  /* FAQ accordion */
+  .faq-item {
+    @apply border-b border-border py-4;
+  }
+
+  /* Testimonial card */
+  .testimonial-card {
+    @apply bg-card rounded-xl p-6;
+    @apply border border-border;
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Pricing card */
+  .pricing-card {
+    @apply bg-card rounded-2xl p-8;
+    @apply border border-border;
+    @apply transition-all duration-300;
+  }
+
+  .pricing-card.featured {
+    @apply border-2 border-accent;
+    @apply relative overflow-hidden;
+    box-shadow: 0 8px 30px -8px hsl(var(--accent) / 0.3);
+  }
+
+  .pricing-card.featured::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-1;
+    background: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(43 74% 60%) 100%);
+  }
+}
+
+@layer utilities {
+  /* Safe area padding for PWA */
+  .safe-area-pt {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .safe-area-pl {
+    padding-left: env(safe-area-inset-left);
+  }
+  .safe-area-pr {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Delay utilities */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
