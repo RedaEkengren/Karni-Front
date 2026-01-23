@@ -4,7 +4,6 @@
 
 **Live:** https://benbodev.se
 
-[![CI](https://github.com/RedaEkengren/Karni-Front/actions/workflows/ci.yml/badge.svg)](https://github.com/RedaEkengren/Karni-Front/actions)
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 
 ## Tech Stack
