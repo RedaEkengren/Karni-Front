@@ -1,116 +1,84 @@
-# Rassidi - رصيدي
+# Rassidi + Credit Manager Pro
 
-Moroccan debt tracking app for small merchants.
+> PWA för marockanska handlare att hantera kundkrediter.
 
----
+**Live:** https://benbodev.se
 
-## Live Site
+[![CI](https://github.com/RedaEkengren/Karni-Front/actions/workflows/ci.yml/badge.svg)](https://github.com/RedaEkengren/Karni-Front/actions)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 
-**URL:** https://benbodev.se
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React 18, TypeScript, Vite |
+| Styling | TailwindCSS, Shadcn/ui |
+| State | Zustand, React Query |
+| Backend | Supabase (BaaS) |
+| PWA | VitePWA, Workbox |
+
+## Projektstruktur
+
+```
+├── frontend/       # React SPA
+├── backend/        # Framtida API (placeholder)
+├── scripts/        # Deploy-scripts
+└── docs/           # Dokumentation
+```
+
+## Kom igång
+
+```bash
+# Krav
+node -v  # 20+ (se .nvmrc)
+
+# Installera
+cd frontend
+npm install
+
+# Utveckling
+npm run dev         # http://localhost:8080
+
+# Bygg
+npm run build       # → dist/
+
+# Test
+npm run test
+```
+
+## Deploy
+
+Deployas till egen server (benbodev.se), inte GitHub Pages.
+
+```bash
+./scripts/deploy-frontend.sh
+```
+
+Eller manuellt:
+```bash
+cd frontend
+npm run build
+sudo cp -r dist/* /var/www/benbodev.se/html/
+sudo chown -R www-data:www-data /var/www/benbodev.se/html/
+```
+
+## Routes
 
 | Path | Beskrivning |
 |------|-------------|
-| `/` | Landing page (Rassidi) |
-| `/app/` | Credit Manager Pro (väns app) |
+| `/` | Landing page |
+| `/features` | Features |
+| `/pricing` | Priser |
+| `/auth` | Inloggning |
+| `/dashboard` | Dashboard |
+| `/clients` | Kunder |
 
----
+## Dokumentation
 
-## Project Structure
+- [Arkitektur](docs/ARCHITECTURE.md)
+- [Deployment](docs/DEPLOYMENT.md)
+- [Contributing](docs/CONTRIBUTING.md)
 
-**ETT projekt, TVÅ repos:**
+## Licens
 
-```
-/opt/karni/
-├── frontend/     # Landing page → benbodev.se/
-├── backend/      # Credit Manager (ZakJ0/credit-manager-pro) → benbodev.se/app/
-└── scripts/      # Deploy scripts
-```
-
-**VIKTIGT:** Frontend har INGA /app routes - nginx servar backend separat.
-
----
-
-## Frontend (Landing Page)
-
-**Tech:** React, Vite, Tailwind, shadcn/ui, PWA
-
-```bash
-cd frontend
-npm install
-npm run dev      # http://localhost:8080
-npm run build    # Creates dist/
-```
-
-**Deploy:**
-```bash
-npm run build
-sudo cp -r dist/* /var/www/benbodev.se/html/
-```
-
----
-
-## Backend (Credit Manager Pro)
-
-**Repo:** `github.com/ZakJ0/credit-manager-pro`
-**Tech:** React, Vite, Tailwind, shadcn/ui, Supabase
-
-```bash
-cd backend
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # Creates dist/
-```
-
-**VIKTIGT för /app path:**
-- `vite.config.ts` måste ha: `base: '/app/'`
-- `src/App.tsx` måste ha: `<BrowserRouter basename="/app">`
-
-**Deploy:**
-```bash
-npm run build
-sudo cp -r dist/* /var/www/benbodev.se/app/
-```
-
-**Supabase Config:**
-- Project: `otmzmxljeswxblzemamx`
-- Config in: `backend/.env`
-
----
-
-## Quick Commands
-
-```bash
-# Build & deploy frontend (landing page)
-cd /opt/karni/frontend && npm run build && sudo cp -r dist/* /var/www/benbodev.se/html/
-
-# Build & deploy backend (Credit Manager app)
-cd /opt/karni/backend && npm run build && sudo cp -r dist/* /var/www/benbodev.se/app/
-
-# Reload nginx
-sudo systemctl reload nginx
-```
-
----
-
-## Server Info
-
-- **Server:** ghostleads (Ubuntu)
-- **Domain:** benbodev.se
-- **SSL:** Let's Encrypt (auto-renew)
-- **Web server:** Nginx
-
----
-
-## Files
-
-| File | Purpose |
-|------|---------|
-| `goldenrules.md` | Development rules (READ FIRST) |
-| `mvp.md` | MVP specification |
-| `domains.md` | Domain research |
-
----
-
-## Contact
-
-Questions? Contact the team.
+Proprietary - All Rights Reserved. Se [LICENSE](LICENSE).
