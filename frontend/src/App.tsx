@@ -1,51 +1,72 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { AppLayout } from "@/components/AppLayout";
+import InstallPrompt from "@/components/InstallPrompt";
 
-// Landing pages
-import Index from "./pages/Index.tsx";
-import Features from "./pages/Features.tsx";
-import Pricing from "./pages/Pricing.tsx";
-import Contact from "./pages/Contact.tsx";
-import Privacy from "./pages/Privacy.tsx";
-import Preview from "./pages/Preview.tsx";
-import NotFound from "./pages/NotFound.tsx";
+// Landing pages (Rassidi)
+import LandingPage from "./pages/landing/LandingPage";
+import Features from "./pages/landing/Features";
+import Pricing from "./pages/landing/Pricing";
+import Contact from "./pages/landing/Contact";
+import Privacy from "./pages/landing/Privacy";
+import Preview from "./pages/landing/Preview";
 
-// Auth pages
-import Login from "./pages/auth/Login.tsx";
-import VerifyOTP from "./pages/auth/VerifyOTP.tsx";
-
+// Credit Manager pages
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
+import Clients from "./pages/Clients";
+import ClientDetail from "./pages/ClientDetail";
+import Transactions from "./pages/Transactions";
+import Settings from "./pages/Settings";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            {/* Landing pages */}
-            <Route path="/" element={<Index />} />
-            <Route path="/features" element={<Features />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/preview" element={<Preview />} />
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner position="top-center" dir="rtl" />
+          <InstallPrompt />
+          <BrowserRouter>
+            <Routes>
+              {/* Landing pages (Rassidi) */}
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/features" element={<Features />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/preview" element={<Preview />} />
 
-            {/* Auth */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/verify" element={<VerifyOTP />} />
+              {/* Credit Manager */}
+              <Route path="/auth" element={<Auth />} />
 
-            {/* 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+              {/* Redirect old /app URLs */}
+              <Route path="/app" element={<Navigate to="/auth" replace />} />
+              <Route path="/app/*" element={<Navigate to="/auth" replace />} />
+
+              {/* Protected Routes */}
+              <Route element={<AppLayout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/clients" element={<Clients />} />
+                <Route path="/clients/:id" element={<ClientDetail />} />
+                <Route path="/transactions" element={<Transactions />} />
+                <Route path="/settings" element={<Settings />} />
+              </Route>
+
+              {/* 404 */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
     </LanguageProvider>
   </QueryClientProvider>
 );
