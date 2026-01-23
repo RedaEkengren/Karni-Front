@@ -18,16 +18,6 @@ import NotFound from "./pages/NotFound.tsx";
 import Login from "./pages/auth/Login.tsx";
 import VerifyOTP from "./pages/auth/VerifyOTP.tsx";
 
-// App pages
-import ProtectedRoute from "./components/ProtectedRoute.tsx";
-import AppLayout from "./pages/app/AppLayout.tsx";
-import Dashboard from "./pages/app/Dashboard.tsx";
-import Customers from "./pages/app/Customers.tsx";
-import CustomerDetail from "./pages/app/CustomerDetail.tsx";
-import AddCustomer from "./pages/app/AddCustomer.tsx";
-import Sadaqa from "./pages/app/Sadaqa.tsx";
-import Chat from "./pages/app/Chat.tsx";
-import Settings from "./pages/app/Settings.tsx";
 
 const queryClient = new QueryClient();
 
@@ -50,24 +40,6 @@ const App = () => (
             {/* Auth */}
             <Route path="/login" element={<Login />} />
             <Route path="/verify" element={<VerifyOTP />} />
-
-            {/* App (protected) */}
-            <Route
-              path="/app"
-              element={
-                <ProtectedRoute>
-                  <AppLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Dashboard />} />
-              <Route path="customers" element={<Customers />} />
-              <Route path="customers/add" element={<AddCustomer />} />
-              <Route path="customers/:id" element={<CustomerDetail />} />
-              <Route path="sadaqa" element={<Sadaqa />} />
-              <Route path="chat" element={<Chat />} />
-              <Route path="settings" element={<Settings />} />
-            </Route>
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />

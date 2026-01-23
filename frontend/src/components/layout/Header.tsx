@@ -70,19 +70,19 @@ const Header = () => {
               </Link>
             ) : (
               <>
-                <Link
-                  to="/login"
+                <a
+                  href="/app"
                   className="hidden sm:inline-flex items-center gap-1 px-4 py-2 text-sm font-medium text-foreground/70 hover:text-foreground transition-colors"
                 >
                   <LogIn size={16} />
                   {t('دخول', 'Connexion')}
-                </Link>
-                <Link
-                  to="/login"
+                </a>
+                <a
+                  href="/app"
                   className="hidden sm:inline-flex btn-primary !px-4 !py-2 !text-sm"
                 >
-                  {t('سجل مجانا', 'S\'inscrire')}
-                </Link>
+                  {t('ابدأ مجانا', 'Commencer')}
+                </a>
               </>
             )}
 
@@ -128,21 +128,21 @@ const Header = () => {
                   </Link>
                 ) : (
                   <>
-                    <Link
-                      to="/login"
+                    <a
+                      href="/app"
                       onClick={() => setIsMenuOpen(false)}
                       className="px-4 py-3 rounded-lg font-medium text-foreground/70 hover:text-foreground hover:bg-muted flex items-center gap-2"
                     >
                       <LogIn size={18} />
                       {t('دخول', 'Connexion')}
-                    </Link>
-                    <Link
-                      to="/login"
+                    </a>
+                    <a
+                      href="/app"
                       onClick={() => setIsMenuOpen(false)}
                       className="btn-primary"
                     >
-                      {t('سجل مجانا', 'S\'inscrire gratuitement')}
-                    </Link>
+                      {t('ابدأ مجانا', 'Commencer gratuitement')}
+                    </a>
                   </>
                 )}
               </div>
