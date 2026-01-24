@@ -2,7 +2,7 @@
 
 ## Overview
 
-Rassidi + Credit Manager Pro is a merged PWA for Moroccan merchants.
+Smart Karni is a PWA for Moroccan merchants to manage customer credits.
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -23,6 +23,12 @@ Rassidi + Credit Manager Pro is a merged PWA for Moroccan merchants.
 │  │  (OAuth)    │  │ (PostgreSQL)│  │   (Files)   │     │
 │  └─────────────┘  └─────────────┘  └─────────────┘     │
 └─────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────┐
+│                   GitHub Pages                          │
+│  Static hosting with custom domain (smartkarni.com)    │
+└─────────────────────────────────────────────────────────┘
 ```
 
 ## Tech Stack
@@ -37,6 +43,8 @@ Rassidi + Credit Manager Pro is a merged PWA for Moroccan merchants.
 | Auth | Supabase Auth |
 | Offline | Dexie (IndexedDB) |
 | PWA | VitePWA, Workbox |
+| Hosting | GitHub Pages |
+| CI/CD | GitHub Actions |
 
 ## Data Flow
 

@@ -2,63 +2,64 @@
 
 ## Production
 
-**URL:** https://benbodev.se
+**URL:** https://smartkarni.com
 
-**Server:** Ubuntu (nginx)
+**Hosting:** GitHub Pages (auto-deploy via GitHub Actions)
 
-### Deploy Steps
+## How It Works
+
+1. Push to `main` branch
+2. GitHub Actions workflow triggers
+3. Builds the React app
+4. Deploys to GitHub Pages
+5. Custom domain `smartkarni.com` serves the site
+
+## GitHub Actions Workflow
+
+Location: `.github/workflows/deploy.yml`
+
+```yaml
+on:
+  push:
+    branches: [main]
+```
+
+## Environment Variables
+
+Set these as GitHub repository secrets:
+
+| Secret | Description |
+|--------|-------------|
+| `VITE_SUPABASE_URL` | Supabase project URL |
+| `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase anon key |
+| `VITE_SUPABASE_PROJECT_ID` | Supabase project ID |
+
+## Custom Domain Setup
+
+### DNS Records (at domain registrar)
+
+```
+A     @    185.199.108.153
+A     @    185.199.109.153
+A     @    185.199.110.153
+A     @    185.199.111.153
+CNAME www  redaekengren.github.io
+```
+
+### GitHub Settings
+
+1. Go to repo Settings -> Pages
+2. Add custom domain: `smartkarni.com`
+3. Enable "Enforce HTTPS"
+
+## SSL
+
+Automatic via GitHub Pages (Let's Encrypt).
+
+## Manual Deploy (if needed)
 
 ```bash
-# 1. Build
 cd /opt/karni/frontend
 npm run build
-
-# 2. Deploy (automated)
-./scripts/deploy-frontend.sh
-
-# Or manually:
-sudo rm -rf /var/www/benbodev.se/html/*
-sudo cp -r dist/* /var/www/benbodev.se/html/
-sudo chown -R www-data:www-data /var/www/benbodev.se/html/
+# Then push to main - GitHub Actions handles the rest
 ```
-
-### Nginx Config
-
-Location: `/etc/nginx/sites-available/benbodev.se`
-
-```nginx
-server {
-    listen 443 ssl;
-    server_name benbodev.se www.benbodev.se;
-
-    root /var/www/benbodev.se/html;
-    index index.html;
-
-    # PWA manifest
-    location = /manifest.webmanifest {
-        types { }
-        default_type application/manifest+json;
-    }
-
-    # Service Worker
-    location = /sw.js {
-        add_header Cache-Control "no-cache, no-store, must-revalidate";
-    }
-
-    # SPA fallback
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
-}
-```
-
-### SSL
-
-Managed by Let's Encrypt (Certbot).
-
-## CI/CD
-
-GitHub Actions runs on push to `main`:
-- Lint
-- Build
-- Test

@@ -1,8 +1,8 @@
-# Rassidi + Credit Manager Pro
+# Smart Karni
 
-> PWA för marockanska handlare att hantera kundkrediter.
+> PWA for Moroccan merchants to manage customer credits.
 
-**Live:** https://benbodev.se
+**Live:** https://smartkarni.com
 
 [![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
 
@@ -15,69 +15,66 @@
 | State | Zustand, React Query |
 | Backend | Supabase (BaaS) |
 | PWA | VitePWA, Workbox |
+| Hosting | GitHub Pages |
 
-## Projektstruktur
+## Project Structure
 
 ```
-├── frontend/       # React SPA
-├── backend/        # Framtida API (placeholder)
-├── scripts/        # Deploy-scripts
-└── docs/           # Dokumentation
+├── frontend/           # React SPA
+├── .github/workflows/  # GitHub Actions (auto-deploy)
+├── backend/            # Future API (placeholder)
+├── scripts/            # Deploy scripts
+└── docs/               # Documentation
 ```
 
-## Kom igång
+## Getting Started
 
 ```bash
-# Krav
-node -v  # 20+ (se .nvmrc)
+# Requirements
+node -v  # 20+ (see .nvmrc)
 
-# Installera
+# Install
 cd frontend
 npm install
 
-# Utveckling
+# Create .env (see .env.example)
+cp .env.example .env
+
+# Development
 npm run dev         # http://localhost:8080
 
-# Bygg
-npm run build       # → dist/
+# Build
+npm run build       # -> dist/
 
 # Test
 npm run test
 ```
 
-## Deploy
+## Deployment
 
-Deployas till egen server (benbodev.se), inte GitHub Pages.
+Auto-deployed via GitHub Actions on push to `main`.
 
-```bash
-./scripts/deploy-frontend.sh
-```
-
-Eller manuellt:
-```bash
-cd frontend
-npm run build
-sudo cp -r dist/* /var/www/benbodev.se/html/
-sudo chown -R www-data:www-data /var/www/benbodev.se/html/
-```
+- **Domain:** smartkarni.com
+- **Hosting:** GitHub Pages
+- **SSL:** Automatic via GitHub
 
 ## Routes
 
-| Path | Beskrivning |
+| Path | Description |
 |------|-------------|
 | `/` | Landing page |
 | `/features` | Features |
-| `/pricing` | Priser |
-| `/auth` | Inloggning |
+| `/pricing` | Pricing |
+| `/auth` | Login |
 | `/dashboard` | Dashboard |
-| `/clients` | Kunder |
+| `/clients` | Clients |
 
-## Dokumentation
+## Documentation
 
-- [Arkitektur](docs/ARCHITECTURE.md)
+- [Architecture](docs/ARCHITECTURE.md)
 - [Deployment](docs/DEPLOYMENT.md)
 - [Contributing](docs/CONTRIBUTING.md)
 
-## Licens
+## License
 
-Proprietary - All Rights Reserved. Se [LICENSE](LICENSE).
+Proprietary - All Rights Reserved. See [LICENSE](LICENSE).
