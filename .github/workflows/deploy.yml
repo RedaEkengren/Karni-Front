@@ -47,7 +47,7 @@ jobs:
         run: cp dist/index.html dist/404.html
 
       - name: Add CNAME for custom domain
-        run: echo "rassidi.se" > dist/CNAME
+        run: echo "smartkarni.com" > dist/CNAME
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
