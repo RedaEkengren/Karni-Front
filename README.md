@@ -4,7 +4,8 @@
 
 **Live:** https://smartkarni.com
 
-[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](LICENSE)
+[![License: Source Available](https://img.shields.io/badge/License-Source%20Available-blue.svg)](LICENSE)
+[![GitHub](https://img.shields.io/github/stars/RedaEkengren/Karni-Front?style=social)](https://github.com/RedaEkengren/Karni-Front)
 
 ---
 
@@ -125,9 +126,27 @@ npm run build
 
 ---
 
+## Transparency
+
+We build Smart Karni in the open. The code is publicly available - not because it's free to use, but because we believe in trust and transparency.
+
+**You can:**
+- View and study the code
+- Learn from our architecture
+
+**You cannot:**
+- Run a competing commercial service
+- Redistribute as your own product
+
+See [LICENSE](LICENSE) for details.
+
+---
+
 ## License
 
-Proprietary - All Rights Reserved. See [LICENSE](LICENSE).
+Source Available - See [LICENSE](LICENSE).
+
+For commercial licensing: salam@smartkarni.com
 
 ---
 
