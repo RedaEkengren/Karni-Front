@@ -27,7 +27,7 @@ const CTASection = () => {
         </h2>
         <p className="text-primary-foreground/80 text-lg mb-8 max-w-xl mx-auto">
           {t(
-            'سجل دابا باش نخبروك ملي نلانسيو رصيدي. الأوائل غادي يستافدو من Premium مجانا لمدة شهر!',
+            'سجل دابا باش نخبروك ملي نلانسيو سمارت كارني. الأوائل غادي يستافدو من Premium مجانا لمدة شهر!',
             'Inscrivez-vous maintenant pour être notifié au lancement. Les premiers inscrits auront Premium gratuit pendant un mois!'
           )}
         </p>

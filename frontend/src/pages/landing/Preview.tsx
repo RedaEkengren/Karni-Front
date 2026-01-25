@@ -49,7 +49,7 @@ const Preview = () => {
               <div className="phone-mockup-screen">
                 {/* App Header */}
                 <div className="bg-primary text-primary-foreground p-4 flex items-center justify-between">
-                  <span className="font-bold">{t('رصيدي', 'Rassidi')}</span>
+                  <span className="font-bold">{t('سمارت كارني', 'Smart Karni')}</span>
                   <span className="text-sm opacity-80">
                     {t('محمد - مول الحانوت', 'Mohammed - Épicier')}
                   </span>

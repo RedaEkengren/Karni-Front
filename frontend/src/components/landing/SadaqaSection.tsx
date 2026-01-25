@@ -17,8 +17,8 @@ const SadaqaSection = () => {
       icon: '🔄',
       title: { ar: 'التوزيع التلقائي', fr: 'Distribution automatique' },
       description: {
-        ar: 'رصيدي كيوزع على الديون الأقدم أولا (FIFO)',
-        fr: 'Rassidi distribue aux dettes les plus anciennes (FIFO)'
+        ar: 'سمارت كارني كيوزع على الديون الأقدم أولا (FIFO)',
+        fr: 'Smart Karni distribue aux dettes les plus anciennes (FIFO)'
       },
     },
     {
@@ -79,8 +79,8 @@ const SadaqaSection = () => {
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {t(
-              'ميزة فريدة في رصيدي: تقدر تدفع ديون ناس آخرين كصدقة. التطبيق كيوزع تبرعك على المحتاجين بطريقة عادلة.',
-              'Une fonctionnalité unique de Rassidi: payez les dettes des autres en sadaqa. L\'app distribue votre don aux nécessiteux de manière équitable.'
+              'ميزة فريدة في سمارت كارني: تقدر تدفع ديون ناس آخرين كصدقة. التطبيق كيوزع تبرعك على المحتاجين بطريقة عادلة.',
+              'Une fonctionnalité unique de Smart Karni: payez les dettes des autres en sadaqa. L\'app distribue votre don aux nécessiteux de manière équitable.'
             )}
           </p>
         </div>

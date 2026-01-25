@@ -55,7 +55,7 @@ export interface ChatMessage {
 }
 
 // Database class
-export class RassidiDB extends Dexie {
+export class SmartKarniDB extends Dexie {
   user!: Table<User>;
   customers!: Table<Customer>;
   debts!: Table<Debt>;
@@ -63,7 +63,7 @@ export class RassidiDB extends Dexie {
   chatMessages!: Table<ChatMessage>;
 
   constructor() {
-    super('rassidi');
+    super('smartkarni');
 
     this.version(1).stores({
       user: 'id, phone',
@@ -76,7 +76,7 @@ export class RassidiDB extends Dexie {
 }
 
 // Singleton instance
-export const db = new RassidiDB();
+export const db = new SmartKarniDB();
 
 // Helper functions
 export async function clearAllData() {

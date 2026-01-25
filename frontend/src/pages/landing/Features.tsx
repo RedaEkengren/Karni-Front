@@ -125,7 +125,7 @@ const Features = () => {
       <section className="py-16 md:py-24 bg-primary text-primary-foreground">
         <div className="section-container text-center">
           <h2 className="text-3xl font-bold mb-4">
-            {t('جرب رصيدي دابا', 'Essayez Rassidi maintenant')}
+            {t('جرب سمارت كارني دابا', 'Essayez Smart Karni maintenant')}
           </h2>
           <a href="/#download" className="btn-gold">
             {t('نزّل التطبيق مجانا', 'Télécharger gratuitement')}

@@ -69,8 +69,8 @@ const SolutionSection = () => {
         </h2>
         <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto text-lg">
           {t(
-            'رصيدي كيخليك تسجل و تتبع الديون ديال الزبائن بطريقة ساهلة و آمنة',
-            'Rassidi vous permet d\'enregistrer et suivre les dettes de vos clients facilement et en toute sécurité'
+            'سمارت كارني كيخليك تسجل و تتبع الديون ديال الزبائن بطريقة ساهلة و آمنة',
+            'Smart Karni vous permet d\'enregistrer et suivre les dettes de vos clients facilement et en toute sécurité'
           )}
         </p>
 

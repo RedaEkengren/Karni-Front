@@ -8,7 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AppLayout } from "@/components/AppLayout";
 import InstallPrompt from "@/components/InstallPrompt";
 
-// Landing pages (Rassidi)
+// Landing pages (Smart Karni)
 import LandingPage from "./pages/landing/LandingPage";
 import Features from "./pages/landing/Features";
 import Pricing from "./pages/landing/Pricing";
@@ -37,7 +37,7 @@ const App = () => (
           <InstallPrompt />
           <BrowserRouter>
             <Routes>
-              {/* Landing pages (Rassidi) */}
+              {/* Landing pages (Smart Karni) */}
               <Route path="/" element={<LandingPage />} />
               <Route path="/features" element={<Features />} />
               <Route path="/pricing" element={<Pricing />} />

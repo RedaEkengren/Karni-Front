@@ -30,7 +30,7 @@ const Header = () => {
               <span className="text-primary-foreground text-xl">📓</span>
             </div>
             <span className="font-bold text-lg md:text-xl text-primary">
-              {t('رصيدي', 'Rassidi')}
+              {t('سمارت كارني', 'Smart Karni')}
             </span>
           </Link>
 

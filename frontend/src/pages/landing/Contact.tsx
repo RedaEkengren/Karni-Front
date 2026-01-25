@@ -116,7 +116,7 @@ const Contact = () => {
                   </a>
 
                   <a
-                    href="mailto:salam@rassidi.ma"
+                    href="mailto:salam@smartkarni.com"
                     className="flex items-center gap-4 p-6 bg-card rounded-xl border border-border hover:border-primary transition-colors group"
                   >
                     <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
@@ -124,7 +124,7 @@ const Contact = () => {
                     </div>
                     <div>
                       <div className="font-bold text-lg">Email</div>
-                      <div className="text-muted-foreground">salam@rassidi.ma</div>
+                      <div className="text-muted-foreground">salam@smartkarni.com</div>
                     </div>
                   </a>
                 </div>

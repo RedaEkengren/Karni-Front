@@ -39,7 +39,7 @@ const HeroSection = () => {
 
           {/* Title */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 animate-slide-up">
-            {t('رصيدي', 'Rassidi')}
+            {t('سمارت كارني', 'Smart Karni')}
           </h1>
 
           {/* NEW Tagline - Focus on never losing data */}

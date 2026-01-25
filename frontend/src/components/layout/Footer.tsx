@@ -22,7 +22,7 @@ const Footer = () => {
               <span className="text-2xl">📓</span>
             </div>
             <span className="font-bold text-2xl">
-              {t('رصيدي', 'Rassidi')}
+              {t('سمارت كارني', 'Smart Karni')}
             </span>
           </div>
           <p className="text-primary-foreground/80 max-w-md mx-auto">
@@ -73,7 +73,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center text-primary-foreground/60 text-sm">
-          <p>© 2025 {t('رصيدي. جميع الحقوق محفوظة', 'Rassidi. Tous droits réservés')}</p>
+          <p>© 2025 {t('سمارت كارني. جميع الحقوق محفوظة', 'Smart Karni. Tous droits réservés')}</p>
           <p className="mt-2 flex items-center justify-center gap-2">
             🇲🇦 {t('صنع في المغرب بكل حب', 'Fait au Maroc avec amour')} ❤️
           </p>

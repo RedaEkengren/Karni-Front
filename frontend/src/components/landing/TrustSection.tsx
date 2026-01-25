@@ -28,8 +28,8 @@ const TrustSection = () => {
       icon: Shield,
       title: { ar: 'ما عمرها تضيع', fr: 'Jamais de perte' },
       description: {
-        ar: 'على عكس التطبيقات الأخرى، رصيدي عندو backup تلقائي دائم',
-        fr: 'Contrairement aux autres apps, Rassidi a une sauvegarde automatique permanente'
+        ar: 'على عكس التطبيقات الأخرى، سمارت كارني عندو backup تلقائي دائم',
+        fr: 'Contrairement aux autres apps, Smart Karni a une sauvegarde automatique permanente'
       },
     },
     {
@@ -54,12 +54,12 @@ const TrustSection = () => {
     <section className="py-16 md:py-24 bg-secondary/30">
       <div className="section-container">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          {t('علاش رصيدي مختلف؟', 'Pourquoi Rassidi est différent?')}
+          {t('علاش سمارت كارني مختلف؟', 'Pourquoi Smart Karni est différent?')}
         </h2>
         <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
           {t(
-            'بنينا رصيدي باش نحلو المشاكل لي كيعانيو منها التجار المغاربة مع التطبيقات الأخرى',
-            'Nous avons construit Rassidi pour résoudre les problèmes des commerçants marocains avec les autres apps'
+            'بنينا سمارت كارني باش نحلو المشاكل لي كيعانيو منها التجار المغاربة مع التطبيقات الأخرى',
+            'Nous avons construit Smart Karni pour résoudre les problèmes des commerçants marocains avec les autres apps'
           )}
         </p>
 
@@ -106,8 +106,8 @@ const TrustSection = () => {
           </div>
           <p className="text-muted-foreground mb-4">
             {t(
-              'كن من الأوائل لي غادي يجربو رصيدي - سجل دابا!',
-              'Soyez parmi les premiers à essayer Rassidi - inscrivez-vous!'
+              'كن من الأوائل لي غادي يجربو سمارت كارني - سجل دابا!',
+              'Soyez parmi les premiers à essayer Smart Karni - inscrivez-vous!'
             )}
           </p>
           <div className="inline-flex items-center gap-2 bg-background px-4 py-2 rounded-full">

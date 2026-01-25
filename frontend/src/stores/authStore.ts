@@ -46,7 +46,7 @@ export const useAuthStore = create<AuthState>()(
       logout: async () => {
         // Clear all local data
         await clearAllData();
-        localStorage.removeItem('rassidi-last-sync');
+        localStorage.removeItem('smartkarni-last-sync');
 
         set({
           token: null,
@@ -65,7 +65,7 @@ export const useAuthStore = create<AuthState>()(
       },
     }),
     {
-      name: 'rassidi-auth',
+      name: 'smartkarni-auth',
       partialize: (state) => ({
         token: state.token,
         user: state.user,

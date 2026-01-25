@@ -13,14 +13,14 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>(() => {
-    const saved = localStorage.getItem('rassidi-language');
+    const saved = localStorage.getItem('smartkarni-language');
     return (saved as Language) || 'ar';
   });
 
   const isArabic = language === 'ar';
 
   useEffect(() => {
-    localStorage.setItem('rassidi-language', language);
+    localStorage.setItem('smartkarni-language', language);
     document.documentElement.dir = isArabic ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
   }, [language, isArabic]);
