@@ -7,21 +7,22 @@ import { useTransactions } from '@/hooks/useTransactions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  ArrowRight, 
-  Plus, 
-  User, 
-  Phone, 
+import {
+  ArrowRight,
+  Plus,
+  User,
+  Phone,
   Wallet,
   History,
   FileText,
   Trash2,
-  Edit,
+  Banknote,
   Loader2
 } from 'lucide-react';
 import { formatCurrency, FREE_PLAN_LIMITS } from '@/lib/constants';
 import { TransactionCard } from '@/components/TransactionCard';
 import { AddTransactionModal } from '@/components/AddTransactionModal';
+import { PartialPaymentModal } from '@/components/PartialPaymentModal';
 import { UpgradeModal } from '@/components/UpgradeModal';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
@@ -50,10 +51,12 @@ const ClientDetail: React.FC = () => {
     isLoading: transactionsLoading,
     addTransaction,
     markAsPaid,
+    applyPartialPayment,
     deleteTransaction,
   } = useTransactions(id);
 
   const [showAddTransaction, setShowAddTransaction] = useState(false);
+  const [showPartialPayment, setShowPartialPayment] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
   const [activeTab, setActiveTab] = useState<'active' | 'history'>('active');
 
@@ -67,7 +70,7 @@ const ClientDetail: React.FC = () => {
         .select('*')
         .eq('id', id)
         .single();
-      
+
       if (error) throw error;
       return data;
     },
@@ -75,7 +78,7 @@ const ClientDetail: React.FC = () => {
   });
 
   const isPremium = profile?.is_premium ?? false;
-  
+
   const totalDebt = useMemo(() => {
     return unpaidTransactions.reduce((sum, t) => sum + t.total_amount, 0);
   }, [unpaidTransactions]);
@@ -101,6 +104,12 @@ const ClientDetail: React.FC = () => {
 
   const handleDeleteTransaction = (transactionId: string) => {
     deleteTransaction.mutate(transactionId);
+  };
+
+  const handlePartialPayment = async (
+    payments: { transactionId: string; amount: number }[]
+  ) => {
+    await applyPartialPayment.mutateAsync(payments);
   };
 
   const handleDeleteClient = async () => {
@@ -207,14 +216,26 @@ const ClientDetail: React.FC = () => {
         </CardContent>
       </Card>
 
-      {/* Add Transaction Button */}
-      <Button
-        onClick={() => setShowAddTransaction(true)}
-        className="w-full btn-gradient py-6"
-      >
-        <Plus className="w-5 h-5 ml-2" />
-        إضافة دين جديد
-      </Button>
+      {/* Action Buttons */}
+      <div className="flex gap-3">
+        <Button
+          onClick={() => setShowAddTransaction(true)}
+          className="flex-1 btn-gradient py-6"
+        >
+          <Plus className="w-5 h-5 ml-2" />
+          إضافة دين جديد
+        </Button>
+        {unpaidTransactions.length > 0 && (
+          <Button
+            onClick={() => setShowPartialPayment(true)}
+            variant="outline"
+            className="py-6 border-primary text-primary hover:bg-primary/10"
+          >
+            <Banknote className="w-5 h-5 ml-2" />
+            تسجيل دفعة
+          </Button>
+        )}
+      </div>
 
       {/* Transactions Tabs */}
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as 'active' | 'history')}>
@@ -315,6 +336,18 @@ const ClientDetail: React.FC = () => {
         currentItemCount={currentItemCount}
         onSubmit={handleAddTransaction}
         onUpgradeNeeded={() => setShowUpgrade(true)}
+      />
+      <PartialPaymentModal
+        isOpen={showPartialPayment}
+        onClose={() => setShowPartialPayment(false)}
+        transactions={unpaidTransactions.map((t) => ({
+          id: t.id,
+          total_amount: t.total_amount,
+          remaining_amount: t.total_amount,
+          created_at: t.created_at,
+        }))}
+        onPayment={handlePartialPayment}
+        clientName={client.name}
       />
       <UpgradeModal
         open={showUpgrade}

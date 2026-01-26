@@ -16,6 +16,7 @@ interface Transaction {
   client_id: string;
   user_id: string;
   total_amount: number;
+  remaining_amount: number;
   is_paid: boolean;
   paid_at: string | null;
   notes: string | null;
@@ -67,9 +68,14 @@ export const useTransactions = (clientId?: string) => {
             client_name = client?.name || '';
           }
 
+          // Calculate remaining amount (total_amount - paid_amount from partial payments)
+          // For now, remaining_amount equals total_amount if not fully paid
+          const remaining_amount = transaction.is_paid ? 0 : Number(transaction.total_amount);
+
           return {
             ...transaction,
             total_amount: Number(transaction.total_amount),
+            remaining_amount,
             items: (items || []).map(item => ({
               ...item,
               price: Number(item.price)
@@ -86,10 +92,10 @@ export const useTransactions = (clientId?: string) => {
 
   const addTransaction = useMutation({
     mutationFn: async ({
-      clientId,
-      items,
-      notes,
-    }: {
+                         clientId,
+                         items,
+                         notes,
+                       }: {
       clientId: string;
       items: { item_name: string; price: number }[];
       notes?: string;
@@ -163,6 +169,61 @@ export const useTransactions = (clientId?: string) => {
     },
   });
 
+  // FIFO Partial Payment - applies payment to oldest debts first
+  const applyPartialPayment = useMutation({
+    mutationFn: async (payments: { transactionId: string; amount: number }[]) => {
+      if (!user) throw new Error('Not authenticated');
+
+      for (const payment of payments) {
+        // Get current transaction
+        const { data: transaction, error: fetchError } = await supabase
+          .from('transactions')
+          .select('total_amount, is_paid')
+          .eq('id', payment.transactionId)
+          .single();
+
+        if (fetchError) throw fetchError;
+
+        const currentAmount = Number(transaction.total_amount);
+        const newAmount = currentAmount - payment.amount;
+
+        if (newAmount <= 0) {
+          // Fully paid
+          const { error: updateError } = await supabase
+            .from('transactions')
+            .update({
+              total_amount: 0,
+              is_paid: true,
+              paid_at: new Date().toISOString(),
+            })
+            .eq('id', payment.transactionId);
+
+          if (updateError) throw updateError;
+        } else {
+          // Partially paid - reduce total_amount
+          const { error: updateError } = await supabase
+            .from('transactions')
+            .update({
+              total_amount: newAmount,
+            })
+            .eq('id', payment.transactionId);
+
+          if (updateError) throw updateError;
+        }
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['transactions'] });
+      queryClient.invalidateQueries({ queryKey: ['clients'] });
+      queryClient.invalidateQueries({ queryKey: ['totalDebt'] });
+      toast.success('تم تسجيل الدفعة بنجاح');
+    },
+    onError: (error) => {
+      console.error('Error applying partial payment:', error);
+      toast.error('حدث خطأ أثناء تسجيل الدفعة');
+    },
+  });
+
   const deleteTransaction = useMutation({
     mutationFn: async (transactionId: string) => {
       const { error } = await supabase
@@ -195,6 +256,7 @@ export const useTransactions = (clientId?: string) => {
     error,
     addTransaction,
     markAsPaid,
+    applyPartialPayment,
     deleteTransaction,
   };
 };

@@ -12,12 +12,12 @@ import { toast } from 'sonner';
 const Auth: React.FC = () => {
   const { user, loading, signIn, signUp } = useAuth();
   const [activeTab, setActiveTab] = useState<'login' | 'signup'>('login');
-  
+
   // Login state
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginLoading, setLoginLoading] = useState(false);
-  
+
   // Signup state
   const [signupName, setSignupName] = useState('');
   const [signupEmail, setSignupEmail] = useState('');
@@ -32,7 +32,7 @@ const Auth: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!loginEmail || !loginPassword) {
       toast.error('الرجاء إدخال البريد الإلكتروني وكلمة المرور');
       return;
