@@ -2,12 +2,12 @@ import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { 
-  Settings as SettingsIcon, 
-  Crown, 
-  LogOut, 
-  User, 
-  Mail, 
+import {
+  Settings as SettingsIcon,
+  Crown,
+  LogOut,
+  User,
+  Mail,
   Shield,
   Check,
   FileSpreadsheet
@@ -123,21 +123,21 @@ const Settings: React.FC = () => {
                   </span>
                 </div>
                 <div className="w-full bg-muted rounded-full h-2">
-                  <div 
+                  <div
                     className="bg-primary rounded-full h-2 transition-all"
                     style={{ width: `${(clientCount / FREE_PLAN_LIMITS.MAX_CLIENTS) * 100}%` }}
                   />
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  الحد الأقصى: {FREE_PLAN_LIMITS.MAX_ITEMS_PER_CLIENT} منتج لكل عميل
+                  الحد الأقصى: {FREE_PLAN_LIMITS.MAX_ITEMS_PER_CLIENT} منتج لكل زبون
                 </p>
               </div>
-              
+
               <div className="text-center py-2">
                 <p className="text-2xl font-bold text-primary">99 د.م.</p>
                 <p className="text-sm text-muted-foreground">شهرياً</p>
               </div>
-              
+
               <Button onClick={handleUpgrade} className="w-full btn-gold py-6">
                 <Crown className="w-5 h-5 ml-2" />
                 ترقية إلى المميزة

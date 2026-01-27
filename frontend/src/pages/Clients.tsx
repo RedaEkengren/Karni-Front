@@ -14,7 +14,7 @@ import { FREE_PLAN_LIMITS } from '@/lib/constants';
 const Clients: React.FC = () => {
   const { profile } = useAuth();
   const { clients, isLoading, addClient, clientCount } = useClients();
-  
+
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddClient, setShowAddClient] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
@@ -51,10 +51,10 @@ const Clients: React.FC = () => {
         <div>
           <h1 className="text-xl font-bold text-foreground flex items-center gap-2">
             <Users className="w-6 h-6 text-primary" />
-            العملاء
+            الزبائن
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            {clientCount} عميل
+            {clientCount} زبون
             {!isPremium && ` / ${FREE_PLAN_LIMITS.MAX_CLIENTS}`}
           </p>
         </div>
@@ -68,7 +68,7 @@ const Clients: React.FC = () => {
       <div className="relative">
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
         <Input
-          placeholder="البحث عن عميل..."
+          placeholder="البحث عن زبون..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="pr-10"
@@ -110,7 +110,7 @@ const Clients: React.FC = () => {
         <Card className="bg-muted/30">
           <CardContent className="p-8 text-center">
             <UserX className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-            <p className="text-muted-foreground">لم يتم العثور على عملاء بهذا الاسم</p>
+            <p className="text-muted-foreground">لم يتم العثور على زبائن بهذا الاسم</p>
             <Button
               variant="outline"
               className="mt-4"
@@ -124,10 +124,10 @@ const Clients: React.FC = () => {
         <Card className="bg-muted/30">
           <CardContent className="p-8 text-center">
             <Users className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-            <p className="text-muted-foreground">لا يوجد عملاء بعد</p>
+            <p className="text-muted-foreground">لا يوجد زبائن بعد</p>
             <Button className="mt-4 btn-gradient" onClick={handleAddClick}>
               <Plus className="w-4 h-4 ml-2" />
-              إضافة أول عميل
+              إضافة أول زبون
             </Button>
           </CardContent>
         </Card>

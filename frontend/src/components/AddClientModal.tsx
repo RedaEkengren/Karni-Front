@@ -100,7 +100,7 @@ export const AddClientModal: React.FC<AddClientModalProps> = ({
               ) : (
                 <UserPlus className="w-4 h-4 ml-2" />
               )}
-              إضافة العميل
+              إضافة الزبون
             </Button>
             <Button
               type="button"

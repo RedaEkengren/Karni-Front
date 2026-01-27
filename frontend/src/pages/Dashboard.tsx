@@ -5,11 +5,11 @@ import { useClients } from '@/hooks/useClients';
 import { useTotalDebt } from '@/hooks/useTransactions';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { 
-  CreditCard, 
-  Users, 
-  Plus, 
-  TrendingUp, 
+import {
+  CreditCard,
+  Users,
+  Plus,
+  TrendingUp,
   Wallet,
   ChevronLeft,
   Crown,
@@ -25,7 +25,7 @@ const Dashboard: React.FC = () => {
   const { profile } = useAuth();
   const { clients, isLoading: clientsLoading, addClient, clientCount } = useClients();
   const { totalDebt, isLoading: debtLoading } = useTotalDebt();
-  
+
   const [showAddClient, setShowAddClient] = useState(false);
   const [showUpgrade, setShowUpgrade] = useState(false);
 
@@ -103,7 +103,7 @@ const Dashboard: React.FC = () => {
                 <Users className="w-5 h-5 text-secondary-foreground" />
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">العملاء</p>
+                <p className="text-xs text-muted-foreground">الزبائن</p>
                 {clientsLoading ? (
                   <Skeleton className="h-6 w-10 mt-1" />
                 ) : (
@@ -120,7 +120,7 @@ const Dashboard: React.FC = () => {
         </Card>
 
         {/* Quick Add Button */}
-        <Card 
+        <Card
           className="card-hover cursor-pointer border-dashed border-2 border-primary/30 bg-primary/5"
           onClick={handleQuickAdd}
         >
@@ -140,10 +140,10 @@ const Dashboard: React.FC = () => {
             <AlertCircle className="w-5 h-5 text-warning flex-shrink-0" />
             <div className="flex-1">
               <p className="text-sm font-medium text-foreground">
-                أنت قريب من الحد الأقصى للعملاء
+                أنت قريب من الحد الأقصى لزبائن
               </p>
               <p className="text-xs text-muted-foreground">
-                يتبقى لك {FREE_PLAN_LIMITS.MAX_CLIENTS - clientCount} عميل فقط في الخطة المجانية
+                يتبقى لك {FREE_PLAN_LIMITS.MAX_CLIENTS - clientCount} زبون فقط في الخطة المجانية
               </p>
             </div>
             <Button size="sm" className="btn-gold" onClick={() => setShowUpgrade(true)}>
@@ -158,7 +158,7 @@ const Dashboard: React.FC = () => {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold flex items-center gap-2">
             <TrendingUp className="w-5 h-5 text-primary" />
-            آخر العملاء
+            آخر الزبائن
           </h2>
           <Link to="/clients">
             <Button variant="ghost" size="sm" className="text-primary">
@@ -202,10 +202,10 @@ const Dashboard: React.FC = () => {
           <Card className="bg-muted/30">
             <CardContent className="p-8 text-center">
               <Users className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-              <p className="text-muted-foreground">لا يوجد عملاء بعد</p>
+              <p className="text-muted-foreground">لا يوجد زبائن بعد</p>
               <Button className="mt-4 btn-gradient" onClick={handleQuickAdd}>
                 <Plus className="w-4 h-4 ml-2" />
-                إضافة أول عميل
+                إضافة أول زبون
               </Button>
             </CardContent>
           </Card>

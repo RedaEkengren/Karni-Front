@@ -118,7 +118,7 @@ const ClientDetail: React.FC = () => {
       await deleteClient.mutateAsync(id);
       navigate('/clients');
     } catch (error) {
-      toast.error('حدث خطأ أثناء حذف العميل');
+      toast.error('حدث خطأ أثناء حذف الزبون');
     }
   };
 
@@ -138,7 +138,7 @@ const ClientDetail: React.FC = () => {
   if (!client) {
     return (
       <div className="py-4 text-center" dir="rtl">
-        <p className="text-muted-foreground">العميل غير موجود</p>
+        <p className="text-muted-foreground">الزبون غير موجود</p>
         <Link to="/clients">
           <Button variant="outline" className="mt-4">
             <ArrowRight className="w-4 h-4 ml-2" />
@@ -179,9 +179,9 @@ const ClientDetail: React.FC = () => {
             </AlertDialogTrigger>
             <AlertDialogContent dir="rtl">
               <AlertDialogHeader>
-                <AlertDialogTitle>حذف العميل</AlertDialogTitle>
+                <AlertDialogTitle>حذف الزبون</AlertDialogTitle>
                 <AlertDialogDescription>
-                  هل أنت متأكد من حذف العميل "{client.name}"؟ سيتم حذف جميع الديون المرتبطة به.
+                  هل أنت متأكد من حذف الزبون "{client.name}"؟ سيتم حذف جميع الديون المرتبطة به.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter className="flex-row-reverse gap-2">

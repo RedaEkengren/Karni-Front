@@ -75,11 +75,11 @@ export const useClients = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['clients'] });
-      toast.success('تمت إضافة العميل بنجاح');
+      toast.success('تمت إضافة الزبون بنجاح');
     },
     onError: (error) => {
       console.error('Error adding client:', error);
-      toast.error('حدث خطأ أثناء إضافة العميل');
+      toast.error('حدث خطأ أثناء إضافة الزبون');
     },
   });
 
@@ -101,11 +101,11 @@ export const useClients = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['clients'] });
-      toast.success('تم تحديث بيانات العميل');
+      toast.success('تم تحديث بيانات الزبون');
     },
     onError: (error) => {
       console.error('Error updating client:', error);
-      toast.error('حدث خطأ أثناء تحديث بيانات العميل');
+      toast.error('حدث خطأ أثناء تحديث بيانات الزبون');
     },
   });
 
@@ -120,11 +120,11 @@ export const useClients = () => {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['clients'] });
-      toast.success('تم حذف العميل');
+      toast.success('تم حذف الزبون');
     },
     onError: (error) => {
       console.error('Error deleting client:', error);
-      toast.error('حدث خطأ أثناء حذف العميل');
+      toast.error('حدث خطأ أثناء حذف الزبون');
     },
   });
 

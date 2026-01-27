@@ -79,7 +79,7 @@ const Register: React.FC = () => {
       <Card className="w-full max-w-md animate-slide-up">
         <CardHeader className="text-center pb-2">
           <CardTitle className="text-xl">إنشاء حساب جديد</CardTitle>
-          <CardDescription>أنشئ حسابك للبدء في إدارة ديون عملائك</CardDescription>
+          <CardDescription>أنشئ حسابك للبدء في إدارة ديون زبائنك</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignup} className="space-y-4">

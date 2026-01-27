@@ -39,7 +39,7 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
           <DialogDescription className="text-center text-base mt-2">
             {reason === 'clients'
               ? 'لقد وصلت إلى الحد الأقصى للعملاء (10 عملاء) في الخطة المجانية.'
-              : 'لقد وصلت إلى الحد الأقصى للمنتجات (15 منتج) لهذا العميل.'}
+              : 'لقد وصلت إلى الحد الأقصى للمنتجات (15 منتج) لهذا الزبون  .'}
           </DialogDescription>
         </DialogHeader>
 
@@ -52,7 +52,7 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-success" />
-                عدد غير محدود من العملاء
+                عدد غير محدود من الزبائن
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-4 h-4 text-success" />
