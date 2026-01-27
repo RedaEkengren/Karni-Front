@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { path: '/dashboard', icon: Home, label: 'الرئيسية' },
-  { path: '/clients', icon: Users, label: 'العملاء' },
+  { path: '/clients', icon: Users, label: 'الزبائن' },
   { path: '/transactions', icon: Receipt, label: 'الديون' },
   { path: '/settings', icon: Settings, label: 'الإعدادات' },
 ];

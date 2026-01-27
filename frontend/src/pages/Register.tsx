@@ -46,6 +46,7 @@ const Register: React.FC = () => {
 
     if (error) {
       if (error.message.includes('User already registered')) {
+        await signOut();
         toast.error('هذا البريد الإلكتروني مسجل بالفعل');
       } else {
         toast.error('حدث خطأ أثناء إنشاء الحساب');

@@ -59,12 +59,12 @@ export const AddClientModal: React.FC<AddClientModalProps> = ({
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
           <div className="space-y-2">
-            <Label htmlFor="name">اسم العميل *</Label>
+            <Label htmlFor="name">اسم الزبون *</Label>
             <Input
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="أدخل اسم العميل"
+              placeholder="أدخل اسم الزبون"
               required
             />
           </div>
@@ -88,7 +88,7 @@ export const AddClientModal: React.FC<AddClientModalProps> = ({
               id="notes"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="ملاحظات إضافية عن العميل..."
+              placeholder="ملاحظات إضافية عن الزبون..."
               rows={3}
             />
           </div>
