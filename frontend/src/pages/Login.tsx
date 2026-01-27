@@ -33,14 +33,17 @@ const Login: React.FC = () => {
     setIsLoading(false);
 
     if (error) {
-      if (error.message.includes('Invalid login credentials')) {
+      const msg = error.message.toLowerCase();
+
+      if (msg.includes('invalid')) {
         toast.error('بيانات الدخول غير صحيحة');
+      } else if (msg.includes('confirm') || msg.includes('verified')) {
+        toast.error('يرجى تأكيد البريد الإلكتروني قبل تسجيل الدخول');
       } else {
-        toast.error('حدث خطأ أثناء تسجيل الدخول');
+        toast.error(error.message); // 👈 show real reason
       }
-    } else {
-      toast.success('تم تسجيل الدخول بنجاح');
     }
+
   };
 
   if (loading) {

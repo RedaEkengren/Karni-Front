@@ -54,7 +54,7 @@ const App = () => (
               <Route path="/register" element={<Register />} />
 
               {/* Redirect old auth/app URLs */}
-              <Route path="/auth" element={<Navigate to="/login" replace />} />
+              <Route path="/index" element={<Navigate to="/login" replace />} />
               <Route path="/app" element={<Navigate to="/login" replace />} />
               <Route path="/app/*" element={<Navigate to="/login" replace />} />
 
