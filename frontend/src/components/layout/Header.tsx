@@ -65,7 +65,7 @@ const Header = () => {
               {isArabic ? 'FR' : 'ع'}
             </button>
 
-            {/* PWA Install (Desktop) */}
+            {/* PWA Install – Desktop */}
             {isInstallable && (
               <button
                 onClick={install}
@@ -103,6 +103,17 @@ const Header = () => {
               </>
             )}
 
+            {/* PWA Install – Mobile (icon) */}
+            {isInstallable && (
+              <button
+                onClick={install}
+                className="md:hidden p-2 rounded-lg bg-muted hover:bg-muted/80"
+                aria-label="Install app"
+              >
+                <Download size={20} />
+              </button>
+            )}
+
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -135,26 +146,8 @@ const Header = () => {
 
               <div className="border-t border-border mt-2 pt-2 flex flex-col gap-1">
 
-                {/* PWA Install (Mobile – visible icon) */}
+                {/* PWA Install – Mobile Menu */}
                 {isInstallable && (
-                  <button
-                    onClick={install}
-                    className="md:hidden p-2 rounded-lg bg-muted hover:bg-muted/80"
-                    aria-label="Install app"
-                  >
-                    <Download size={20} />
-                  </button>
-                )}
-
-                {/* Mobile Menu Toggle */}
-                <button
-                  onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="md:hidden p-2 rounded-lg hover:bg-muted"
-                >
-                  {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
-
-                {/*         {isInstallable && (
                   <button
                     onClick={() => {
                       install();
@@ -165,7 +158,7 @@ const Header = () => {
                     <Download size={18} />
                     {t('تحميل التطبيق', 'Installer l’application')}
                   </button>
-                )}*/}
+                )}
 
                 {isAuthenticated ? (
                   <Link
