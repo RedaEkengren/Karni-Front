@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => ({
       manifest: {
         name: "Smart Karni",
         short_name: "SmartKarni",
-        description: "إدارة ديون العملاء بكل سهولة",
+        description: "إدارة ديون الزبائن بكل سهولة",
         theme_color: "#10b981",
         background_color: "#ffffff",
         display: "standalone",
