@@ -58,7 +58,7 @@ const Login: React.FC = () => {
         <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-emerald">
           <CreditCard className="w-10 h-10 text-primary-foreground" />
         </div>
-        <h1 className="text-3xl font-bold text-foreground">مدير الديون</h1>
+        <h1 className="text-3xl font-bold text-foreground">سمارت كارني</h1>
         <p className="text-muted-foreground mt-2">إدارة ديون الزبائن بكل سهولة</p>
       </div>
 

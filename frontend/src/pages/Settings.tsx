@@ -94,7 +94,7 @@ const Settings: React.FC = () => {
               <div className="bg-accent/10 rounded-lg p-4 space-y-2">
                 <div className="flex items-center gap-2 text-sm">
                   <Check className="w-4 h-4 text-success" />
-                  <span>عدد غير محدود من العملاء</span>
+                  <span>عدد غير محدود من الزبائن</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <Check className="w-4 h-4 text-success" />
@@ -117,7 +117,7 @@ const Settings: React.FC = () => {
             <>
               <div className="bg-muted/50 rounded-lg p-4 space-y-3">
                 <div className="flex items-center justify-between text-sm">
-                  <span>العملاء المستخدمون</span>
+                  <span>الزبائن المستخدمون</span>
                   <span className="font-medium">
                     {clientCount} / {FREE_PLAN_LIMITS.MAX_CLIENTS}
                   </span>
@@ -182,7 +182,7 @@ const Settings: React.FC = () => {
 
       {/* Version */}
       <p className="text-center text-xs text-muted-foreground pb-4">
-        مدير الديون - الإصدار 1.0.0
+        سمارت كارني - الإصدار 1.0.0
       </p>
     </div>
   );
