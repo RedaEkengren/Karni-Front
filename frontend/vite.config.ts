@@ -20,14 +20,13 @@ export default defineConfig(({ mode }) => ({
       manifest: {
         name: "Smart Karni",
         short_name: "Karni",
-        start_url: "/login",
         description: "إدارة ديون العملاء بكل سهولة",
         theme_color: "#10b981",
         background_color: "#ffffff",
         display: "standalone",
         orientation: "portrait",
         scope: "/",
-        start_url: "/",
+        start_url: "/login",
         icons: [
           {
             src: "/icon-192.png",
