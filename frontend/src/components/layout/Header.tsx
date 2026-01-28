@@ -111,6 +111,7 @@ const Header = () => {
                 aria-label="Install app"
               >
                 <Download size={20} />
+                {t('تحميل التطبيق', 'Installer')}
               </button>
             )}
 
