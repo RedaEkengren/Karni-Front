@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => ({
       includeAssets: ["favicon.ico", "robots.txt"],
       manifest: {
         name: "Smart Karni",
-        short_name: "Karni",
+        short_name: "SmartKarni",
         description: "إدارة ديون العملاء بكل سهولة",
         theme_color: "#10b981",
         background_color: "#ffffff",
