@@ -38,8 +38,8 @@ export const UpgradeModal: React.FC<UpgradeModalProps> = ({
           </DialogTitle>
           <DialogDescription className="text-center text-base mt-2">
             {reason === 'clients'
-              ? 'لقد وصلت إلى الحد الأقصى للعملاء (10 عملاء) في الخطة المجانية.'
-              : 'لقد وصلت إلى الحد الأقصى للمنتجات (15 منتج) لهذا الزبون  .'}
+              ? 'لقد وصلت إلى الحد الأقصى للزبائن (20 زبائن) في الخطة المجانية.'
+              : 'لقد وصلت إلى الحد الأقصى للمنتجات (100 منتج) لهذا الزبون  .'}
           </DialogDescription>
         </DialogHeader>
 
