@@ -29,11 +29,6 @@ export const AdBanner: React.FC<AdBannerProps> = ({ position }) => {
             </p>
           </div>
         </div>
-
-        <button className="flex items-center gap-1 text-xs font-semibold bg-primary text-primary-foreground px-3 py-2 rounded-lg hover:bg-primary/90 transition-colors">
-          جرب الآن
-          <ChevronLeft size={14} />
-        </button>
       </div>
     </div>
   );
