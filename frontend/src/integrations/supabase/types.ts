@@ -147,6 +147,25 @@ export type Database = {
           },
         ]
       }
+      app_installs: {
+        Row: {
+          id: string
+          platform: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          platform: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          platform?: string
+          created_at?: string
+        }
+        Relationships: []
+      }
+
     }
     Views: {
       [_ in never]: never
